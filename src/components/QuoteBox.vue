@@ -45,6 +45,9 @@ export default {
       }, 300)
       
     }
+  },
+  mounted() {
+    this.getColors();
   }
 }
 </script>
