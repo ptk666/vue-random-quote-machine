@@ -1,19 +1,22 @@
+
+
 <template>
-  <div id='quote-box'>
+  <div :style="{ backgroundColor: selectedColor, transition: '0.3s ease-in' }" id='quote-box'>
     <p id="text">"{{quote.text}}"</p>
     <p id="author">— <em>{{quote.author}}</em></p>
-    <a id='tweet-quote' title='Tweet this quote!' target='_top'><button><i class='fa fa-twitter'></i></button></a>
-    <button id="new-quote" @click='getQuotes'>New Quote</button>
+    <a id='tweet-quote' title='Tweet this quote!' target='_top'><button :style="{ backgroundColor: selectedColor, transition: '0.3s ease-in' }"><i class='fa fa-twitter'></i></button></a>
+    <button :style="{ backgroundColor: selectedColor, transition: '0.3s ease-in' }" id="new-quote" @click='getQuotes(); getColors()'>New Quote</button>
   </div>
 </template>
 
 <script>
 
 export default {
+
   name: 'QuoteBox',
   props: ['quote'],
   data() {
-    return {
+    return { 
       colors: [
         '#974545',
         '#976E45',
@@ -27,12 +30,20 @@ export default {
         '#459781',
         '#458497'
       ],
+      selectedColor: ''
     
     }
   },
   methods: {
     getQuotes() {
       this.$emit('getQuotes');
+    },
+    getColors() {
+      let item = this.colors[Math.floor((Math.random() * this.colors.length))];
+      setTimeout(() => {
+        this.selectedColor = item;
+      }, 300)
+      
     }
   }
 }
@@ -41,7 +52,6 @@ export default {
 <style>
 
   #quote-box {
-    background-color: red;
     width: 50%;
     border-radius: 10px;
     justify-content: center;
@@ -71,7 +81,6 @@ export default {
     cursor: pointer;
     height: 38px;
     color: white;
-    background-color: red;
   }
 
   #tweet-quote {
