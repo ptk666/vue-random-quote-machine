@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <QuoteBox
-    :quote='quotes' />
+    :quote='quotes'
+    @getQuotes='getQuotes' />
   </div>
 </template>
 
