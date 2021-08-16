@@ -3,17 +3,20 @@
     <QuoteBox
     :quote='quotes'
     @getQuotes='getQuotes' />
+    <Signature />
   </div>
 </template>
 
 <script>
 import axios from 'axios'
 import QuoteBox from './components/QuoteBox.vue'
+import Signature from './components/Signature.vue'
 
 export default {
   name: 'App',
   components: {
-    QuoteBox
+    QuoteBox,
+    Signature
   },
   data() {
     return {
